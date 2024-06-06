@@ -22,10 +22,12 @@ export default function Home() {
 
   useEffect(() => {
     const gotTasks = window.localStorage.getItem("tasks");
-    let cnt = 0;
-    JSON.parse(gotTasks).map((task) => { if (task.completed === false) { cnt += 1; } })
-    setItemsLeft(cnt);
-    if (gotTasks != null) setTasks(JSON.parse(gotTasks));
+    if (gotTasks != null) {
+      let cnt = 0;
+      JSON.parse(gotTasks).map((task) => { if (task.completed === false) { cnt += 1; } })
+      setItemsLeft(cnt);
+      setTasks(JSON.parse(gotTasks));
+    }
     else setTasks([]);
   }, []);
 
