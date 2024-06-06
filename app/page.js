@@ -22,7 +22,6 @@ export default function Home() {
 
   useEffect(() => {
     const gotTasks = window.localStorage.getItem("tasks");
-    console.log(JSON.parse(gotTasks));
     let cnt = 0;
     JSON.parse(gotTasks).map((task) => { if (task.completed === false) { cnt += 1; } })
     setItemsLeft(cnt);
