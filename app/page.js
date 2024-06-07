@@ -31,15 +31,19 @@ export default function Home() {
     else setTasks([]);
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
+
   const handleAddTask = () => {
     // Implement add task logic here
     // console.log(newTask);
     if (newTask.length > 0) {
       setItemsLeft(itemsLeft + 1);
       setTasks([...tasks, new Task(++id, newTask, false)]);
-      window.localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   };
+
 
   const handleClearCompleted = () => {
     const newTasks = [];
@@ -50,7 +54,7 @@ export default function Home() {
     })
     setTasks(newTasks);
     setItemsLeft(newTasks.length);
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   return (

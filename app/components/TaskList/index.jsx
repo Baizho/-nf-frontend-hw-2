@@ -18,7 +18,7 @@ const TaskList = ({tasks, setTasks, itemsLeft, setItemsLeft, filter}) => {
       setItemsLeft(itemsLeft + 1);
     }
     setTasks(newTasks);
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
   const handleDeleteTask = (index) => {
@@ -29,7 +29,7 @@ const TaskList = ({tasks, setTasks, itemsLeft, setItemsLeft, filter}) => {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks(newTasks);
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
   // Filter tasks by status here
   return (
